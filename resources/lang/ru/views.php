@@ -72,6 +72,38 @@ return [
             'login' => 'Вход',
             'logout' => 'Выход',
             'register' => 'Регистрация',
+            'statuses' => 'Статусы',
+        ],
+    ],
+
+    'task_status' => [
+        'create' => [
+            'create_status' => 'Создать статус',
+            'store' => 'Создать',
+        ],
+
+        'edit' => [
+            'edit_status' => 'Изменение статуса',
+            'update' => 'Обновить',
+        ],
+
+        'form' => [
+            'name' => 'Имя',
+        ],
+
+        'index' => [
+            'actions' => 'Действия',
+            'confirm_destroy' => 'Вы уверены?',
+            'create_status' => 'Создать статус',
+            'created_at' => 'Дата создания',
+            'destroy' => 'Удалить',
+            'edit' => 'Изменить',
+            'id' => 'ID',
+            'name' => 'Имя',
+            'statuses' => 'Статусы',
+            'status_destroyed' => 'Статус успешно удалён',
+            'status_stored' => 'Статус успешно создан',
+            'status_updated' => 'Статус успешно изменён',
         ],
     ],
 
