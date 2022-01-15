@@ -25,6 +25,9 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('tasks.index') }}">{{ __('views.layouts.app.tasks') }}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link active" href="{{ route('task_statuses.index') }}">{{ __('views.layouts.app.statuses') }}</a>
                             </li>
                         </ul>
@@ -67,6 +70,7 @@
             </nav>
 
             <main class="container py-4">
+                @include('flash::message')
                 @yield('content')
             </main>
         </div>

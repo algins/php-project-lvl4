@@ -13,16 +13,12 @@ abstract class TestCase extends BaseTestCase
     use DatabaseMigrations;
     use CreatesApplication;
 
-    protected User $user;
-
     protected function setUp(): void
     {
         parent::setUp();
 
         /** @var User $user */
         $user = User::factory()->create();
-        $this->user = $user;
-
-        $this->actingAs($this->user);
+        $this->actingAs($user);
     }
 }

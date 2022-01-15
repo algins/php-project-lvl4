@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskStatusRequest;
 use App\Models\TaskStatus;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -33,9 +34,11 @@ class TaskStatusController extends Controller
         $taskStatus = new TaskStatus($request->validated());
         $taskStatus->save();
 
-        return redirect()
-            ->route('task_statuses.index')
-            ->with('success', __('views.task_status.index.status_stored'));
+        /** @var string $message */
+        $message = __('views.layouts.app.status_stored');
+        flash($message)->success();
+
+        return redirect()->route('task_statuses.index');
     }
 
     public function edit(TaskStatus $taskStatus): View
@@ -48,17 +51,27 @@ class TaskStatusController extends Controller
         $taskStatus->fill($request->validated());
         $taskStatus->save();
 
-        return redirect()
-            ->route('task_statuses.index')
-            ->with('success', __('views.task_status.index.status_updated'));
+        /** @var string $message */
+        $message = __('views.layouts.app.status_updated');
+        flash($message)->success();
+
+        return redirect()->route('task_statuses.index');
     }
 
     public function destroy(TaskStatus $taskStatus): RedirectResponse
     {
-        $taskStatus->delete();
+        try {
+            $taskStatus->delete();
 
-        return redirect()
-            ->route('task_statuses.index')
-            ->with('success', __('views.task_status.index.status_destroyed'));
+            /** @var string $message */
+            $message = __('views.layouts.app.status_destroyed');
+            flash($message)->success();
+        } catch (Exception $e) {
+            /** @var string $message */
+            $message = __('views.layouts.app.status_not_destroyed');
+            flash($message)->error();
+        }
+
+        return redirect()->route('task_statuses.index');
     }
 }

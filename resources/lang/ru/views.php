@@ -72,7 +72,50 @@ return [
             'login' => 'Вход',
             'logout' => 'Выход',
             'register' => 'Регистрация',
+            'status_destroyed' => 'Статус успешно удалён',
+            'status_not_destroyed' => 'Не удалось удалить статус',
+            'status_stored' => 'Статус успешно создан',
+            'status_updated' => 'Статус успешно изменён',
             'statuses' => 'Статусы',
+            'task_destroyed' => 'Задача успешно удалена',
+            'task_not_destroyed' => 'Не удалось удалить задачу',
+            'task_stored' => 'Задача успешно создана',
+            'task_updated' => 'Задача успешно изменена',
+            'tasks' => 'Задачи',
+        ],
+    ],
+
+    'task' => [
+        'create' => [
+            'create_task' => 'Создать задачу',
+            'store' => 'Создать',
+        ],
+
+        'edit' => [
+            'edit_task' => 'Изменение задачи',
+            'update' => 'Обновить',
+        ],
+
+        'form' => [
+            'description' => 'Описание',
+            'name' => 'Имя',
+            'status' => 'Статус',
+            'assignee' => 'Исполнитель',
+        ],
+
+        'index' => [
+            'actions' => 'Действия',
+            'assignee' => 'Исполнитель',
+            'confirm_destroy' => 'Вы уверены?',
+            'create_task' => 'Создать задачу',
+            'created_at' => 'Дата создания',
+            'creator' => 'Автор',
+            'destroy' => 'Удалить',
+            'edit' => 'Изменить',
+            'id' => 'ID',
+            'name' => 'Имя',
+            'status' => 'Статус',
+            'tasks' => 'Задачи',
         ],
     ],
 
@@ -101,9 +144,6 @@ return [
             'id' => 'ID',
             'name' => 'Имя',
             'statuses' => 'Статусы',
-            'status_destroyed' => 'Статус успешно удалён',
-            'status_stored' => 'Статус успешно создан',
-            'status_updated' => 'Статус успешно изменён',
         ],
     ],
 
