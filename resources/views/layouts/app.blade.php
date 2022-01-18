@@ -30,6 +30,9 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="{{ route('task_statuses.index') }}">{{ __('views.layouts.app.statuses') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('labels.index') }}">{{ __('views.layouts.app.labels') }}</a>
+                            </li>
                         </ul>
 
                         <ul class="navbar-nav ml-auto">

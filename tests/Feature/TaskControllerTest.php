@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\Label;
 use App\Models\Task;
 
 class TaskControllerTest extends TestCase
@@ -19,35 +20,63 @@ class TaskControllerTest extends TestCase
         $response->assertOk();
     }
 
+    public function testShow(): void
+    {
+        $task = Task::factory()->create();
+
+        $response = $this->get(route('tasks.show', $task));
+        $response->assertOk();
+    }
+
     public function testEdit(): void
     {
         $task = Task::factory()->create();
 
-        $response = $this->get(route('tasks.edit', [$task]));
+        $response = $this->get(route('tasks.edit', $task));
         $response->assertOk();
     }
 
     public function testStore(): void
     {
-        $data = Task::factory()->make()->toArray();
+        /** @var Label $label */
+        $label = Label::factory()->create();
 
-        $response = $this->post(route('tasks.store'), $data);
+        $taskData = Task::factory()->make()->toArray();
+
+        $response = $this->post(route('tasks.store'), array_merge($taskData, ['labels' => [$label->id]]));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', $data);
+        $this->assertDatabaseHas('tasks', $taskData);
+
+        /** @var Task $task */
+        $task = Task::first();
+
+        $this->assertDatabaseHas('label_task', [
+            'task_id' => $task->id,
+            'label_id' => $label->id,
+        ]);
     }
 
     public function testUpdate(): void
     {
-        $task = Task::factory()->create();
-        $data = Task::factory()->make()->toArray();
+        /** @var Label $label */
+        $label = Label::factory()->create();
 
-        $response = $this->patch(route('tasks.update', $task), $data);
+        /** @var Task $task */
+        $task = Task::factory()->create();
+        $taskData = Task::factory()->make()->toArray();
+
+        $response = $this->patch(route('tasks.update', $task), array_merge($taskData, ['labels' => [$label->id]]));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', $data);
+        $this->assertDatabaseHas('tasks', $taskData);
+
+        $this->assertDatabaseHas('label_task', [
+            'task_id' => $task->id,
+            'label_id' => $label->id,
+        ]);
     }
 
     public function testDestroy(): void
@@ -55,7 +84,7 @@ class TaskControllerTest extends TestCase
         /** @var Task $task */
         $task = Task::factory()->create();
 
-        $response = $this->delete(route('tasks.destroy', [$task]));
+        $response = $this->delete(route('tasks.destroy', $task));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 

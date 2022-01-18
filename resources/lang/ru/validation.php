@@ -2,6 +2,7 @@
 
 return [
 
+    'array'  => ':attribute должно быть массивом',
     'confirmed' => ':attribute и подтверждение не совпадают',
     'email' => ':attribute должно быть действительным электронным адресом',
     'exists' => 'Выбранное значение для :attribute некорректно',
@@ -25,6 +26,7 @@ return [
 
     'attributes' => [
         'email' => 'Email',
+        'labels.*' => 'Метки',
         'name' => 'Имя',
         'password' => 'Пароль',
     ],

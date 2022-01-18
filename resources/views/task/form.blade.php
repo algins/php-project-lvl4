@@ -10,8 +10,8 @@
 </div>
 
 <div class="form-group mb-3">
-    <label for="name">{{ __('views.task.form.description') }}</label>
-    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description">{{ old('name', $task->name ?? '') }}</textarea>
+    <label for="description">{{ __('views.task.form.description') }}</label>
+    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description">{{ old('description', $task->description ?? '') }}</textarea>
 
     @error('description')
         <span class="invalid-feedback" role="alert">
@@ -22,6 +22,7 @@
 
 <div class="form-group mb-3">
     <label for="status_id">{{ __('views.task.form.status') }}</label>
+
     <select class="form-control @error('status_id') is-invalid @enderror" name="status_id" id="status_id">
         <option></option>
 
@@ -39,6 +40,7 @@
 
 <div class="form-group mb-3">
     <label for="status_id">{{ __('views.task.form.assignee') }}</label>
+
     <select class="form-control @error('assigned_to_id') is-invalid @enderror" name="assigned_to_id" id="assigned_to_id">
         <option></option>
 
@@ -48,6 +50,22 @@
     </select>
 
     @error('assigned_to_id')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+
+<div class="form-group mb-3">
+    <label for="labels[]">{{ __('views.task.form.labels') }}</label>
+
+    <select class="form-control @error('labels.*') is-invalid @enderror" name="labels[]" id="labels[]" multiple>
+        @foreach ($labels as $label)
+            <option value="{{ $label->id }}" @if(in_array($label->id, old('labels', $task->labels->pluck('id')->toArray()))) selected @endif>{{ $label->name }}</option>
+        @endforeach
+    </select>
+
+    @error('labels.*')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>

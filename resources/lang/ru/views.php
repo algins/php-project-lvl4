@@ -66,9 +66,44 @@ return [
         ],
     ],
 
+    'label' => [
+        'create' => [
+            'create_label' => 'Создать метку',
+            'store' => 'Создать',
+        ],
+
+        'edit' => [
+            'edit_label' => 'Изменение метки',
+            'update' => 'Обновить',
+        ],
+
+        'form' => [
+            'description' => 'Описание',
+            'name' => 'Имя',
+        ],
+
+        'index' => [
+            'actions' => 'Действия',
+            'confirm_destroy' => 'Вы уверены?',
+            'create_label' => 'Создать метку',
+            'created_at' => 'Дата создания',
+            'description' => 'Описание',
+            'destroy' => 'Удалить',
+            'edit' => 'Изменить',
+            'id' => 'ID',
+            'name' => 'Имя',
+            'labels' => 'Метки',
+        ],
+    ],
+
     'layouts' => [
         'app' => [
             'home' => 'Менеджер задач',
+            'label_destroyed' => 'Метка успешно удалена',
+            'label_not_destroyed' => 'Не удалось удалить метку',
+            'label_stored' => 'Метка успешно создана',
+            'label_updated' => 'Метка успешно изменена',
+            'labels' => 'Метки',
             'login' => 'Вход',
             'logout' => 'Выход',
             'register' => 'Регистрация',
@@ -97,10 +132,11 @@ return [
         ],
 
         'form' => [
+            'assignee' => 'Исполнитель',
             'description' => 'Описание',
+            'labels' => 'Метки',
             'name' => 'Имя',
             'status' => 'Статус',
-            'assignee' => 'Исполнитель',
         ],
 
         'index' => [
@@ -116,6 +152,14 @@ return [
             'name' => 'Имя',
             'status' => 'Статус',
             'tasks' => 'Задачи',
+        ],
+
+        'show' => [
+            'description' => 'Описание',
+            'labels' => 'Метки',
+            'name' => 'Имя',
+            'status' => 'Статус',
+            'show_task' => 'Просмотр задачи: :task',
         ],
     ],
 
