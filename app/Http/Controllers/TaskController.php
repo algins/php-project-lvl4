@@ -9,6 +9,7 @@ use App\Models\TaskStatus;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TaskController extends Controller
 {
@@ -19,9 +20,14 @@ class TaskController extends Controller
 
     public function index(): View
     {
-        $tasks = Task::all();
+        $tasks = QueryBuilder::for(Task::class)
+            ->allowedFilters(['status_id', 'created_by_id', 'assigned_to_id'])
+            ->get();
 
-        return view('task.index', compact('tasks'));
+        $taskStatuses = TaskStatus::all();
+        $users = User::all();
+
+        return view('task.index', compact('tasks', 'taskStatuses', 'users'));
     }
 
     public function create(): View

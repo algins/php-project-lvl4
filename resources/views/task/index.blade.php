@@ -3,9 +3,51 @@
 @section('content')
     <h1 class="mb-5">{{ __('views.task.index.tasks') }}</h1>
 
-    @auth
-        <a href="{{ route('tasks.create') }}" class="btn btn-primary">{{ __('views.task.index.create_task') }}</a>
-    @endauth
+    <div class="d-flex mb-3">
+        <div class="flex-grow-1">
+            <form method="GET" action="{{ route('tasks.index') }}" accept-charset="UTF-8">
+                <div class="row no-gutters">
+                    <div class="col mr-2">
+                        <select class="form-control" name="status_id">
+                            <option value="">{{ __('views.task.index.status') }}</option>
+
+                            @foreach ($taskStatuses as $taskStatus)
+                                <option value="{{ $taskStatus->id }}" @if($taskStatus->id == request('status_id')) selected @endif>{{ $taskStatus->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col mr-2">
+                        <select class="form-control" name="created_by_id">
+                            <option value="">{{ __('views.task.index.creator') }}</option>
+
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}" @if($user->id == request('created_by_id')) selected @endif>{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col mr-2">
+                        <select class="form-control" name="assigned_to_id">
+                            <option value="">{{ __('views.task.index.assignee') }}</option>
+
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}" @if($user->id == request('assigned_to_id')) selected @endif>{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col mr-2">
+                        <input class="btn btn-outline-primary" type="submit" value="{{ __('views.task.index.filter') }}">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        @auth
+            <a href="{{ route('tasks.create') }}" class="btn btn-primary ml-auto">{{ __('views.task.index.create_task') }}</a>
+        @endauth
+    </div>
 
     <table class="table mt-2">
         <thead>

@@ -9,12 +9,14 @@
         "doctrine/dbal": "^3.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "illuminate/database": "^8.80",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "rollbar/rollbar-laravel": "^7.0"
+        "rollbar/rollbar-laravel": "^7.0",
+        "spatie/laravel-query-builder": "4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
