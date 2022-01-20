@@ -16,7 +16,7 @@ class TaskStatusRequest extends FormRequest
     {
         /** @var TaskStatus $taskStatus */
         $taskStatus = $this->route('task_status');
-        $ignoreId = $taskStatus->id ?? null;
+        $ignoreId = $taskStatus->id ?? 0;
 
         return [
             'name' => 'required|max:255|unique:task_statuses,name,' . $ignoreId,
