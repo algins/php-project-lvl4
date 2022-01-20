@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Label;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LabelRequest extends FormRequest
@@ -13,8 +14,12 @@ class LabelRequest extends FormRequest
 
     public function rules(): array
     {
+        /** @var Label $label */
+        $label = $this->route('label');
+        $ignoreId = $label->id ?? 0;
+
         return [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:labels,name,' . $ignoreId,
             'description' => 'nullable',
         ];
     }
