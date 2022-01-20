@@ -23,4 +23,13 @@ class LabelRequest extends FormRequest
             'description' => 'nullable',
         ];
     }
+
+    public function messages(): array
+    {
+        $model = __('models.label');
+
+        return [
+            'name.unique' => __('validation.custom.name.unique', ['model' => $model]),
+        ];
+    }
 }
