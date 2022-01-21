@@ -8,31 +8,31 @@
             <form method="GET" action="{{ route('tasks.index') }}" accept-charset="UTF-8">
                 <div class="row no-gutters">
                     <div class="col mr-2">
-                        <select class="form-control" name="status_id">
+                        <select class="form-control" name="filter[status_id]">
                             <option value="">{{ __('views.task.index.status') }}</option>
 
                             @foreach ($taskStatuses as $taskStatus)
-                                <option value="{{ $taskStatus->id }}" @if($taskStatus->id == request('status_id')) selected @endif>{{ $taskStatus->name }}</option>
+                                <option value="{{ $taskStatus->id }}" @if($taskStatus->id == request('filter.status_id')) selected @endif>{{ $taskStatus->name }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="col mr-2">
-                        <select class="form-control" name="created_by_id">
+                        <select class="form-control" name="filter[created_by_id]">
                             <option value="">{{ __('views.task.index.creator') }}</option>
 
                             @foreach ($users as $user)
-                                <option value="{{ $user->id }}" @if($user->id == request('created_by_id')) selected @endif>{{ $user->name }}</option>
+                                <option value="{{ $user->id }}" @if($user->id == request('filter.created_by_id')) selected @endif>{{ $user->name }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="col mr-2">
-                        <select class="form-control" name="assigned_to_id">
+                        <select class="form-control" name="filter[assigned_to_id]">
                             <option value="">{{ __('views.task.index.assignee') }}</option>
 
                             @foreach ($users as $user)
-                                <option value="{{ $user->id }}" @if($user->id == request('assigned_to_id')) selected @endif>{{ $user->name }}</option>
+                                <option value="{{ $user->id }}" @if($user->id == request('filter.assigned_to_id')) selected @endif>{{ $user->name }}</option>
                             @endforeach
                         </select>
                     </div>
