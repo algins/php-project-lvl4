@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,4 +18,12 @@ class Label extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public function getCreatedAtAttribute(string $date): string
+    {
+        /** @var Carbon $dateObj */
+        $dateObj = Carbon::createFromFormat('Y-m-d H:i:s', $date);
+
+        return $dateObj->format('d.m.Y');
+    }
 }
