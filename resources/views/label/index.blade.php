@@ -4,10 +4,10 @@
     <h1 class="mb-5">{{ __('views.label.index.labels') }}</h1>
 
     @auth
-        <a href="{{ route('labels.create') }}" class="btn btn-primary">{{ __('views.label.index.create_label') }}</a>
+        <a href="{{ route('labels.create') }}" class="btn btn-primary mb-2">{{ __('views.label.index.create_label') }}</a>
     @endauth
 
-    <table class="table mt-2">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ __('views.label.index.id') }}</th>

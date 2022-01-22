@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="mb-5">{{ __('views.task.index.tasks') }}</h1>
 
-    <div class="d-flex mb-3">
+    <div class="d-flex mb-2">
         <div class="flex-grow-1">
             <form method="GET" action="{{ route('tasks.index') }}" accept-charset="UTF-8">
                 <div class="row no-gutters">
@@ -49,7 +49,7 @@
         @endauth
     </div>
 
-    <table class="table mt-2">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ __('views.task.index.id') }}</th>
