@@ -33,7 +33,7 @@ test-coverage:
 
 deploy:
 	git push heroku main
-	heroku run make migrate
+	heroku run php artisan migrate --force
 
 lint:
 	composer exec phpcs
