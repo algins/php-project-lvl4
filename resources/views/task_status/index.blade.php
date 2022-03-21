@@ -37,4 +37,6 @@
             @endforeach
         </tbody>
     </table>
+
+    {{ $taskStatuses->links() }}
 @endsection
