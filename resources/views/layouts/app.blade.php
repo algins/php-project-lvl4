@@ -25,13 +25,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('tasks.index') }}">{{ __('views.layouts.app.tasks') }}</a>
+                                <a class="nav-link @if(request()->routeIs('tasks.index')) active @endif" href="{{ route('tasks.index') }}">{{ __('views.layouts.app.tasks') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('task_statuses.index') }}">{{ __('views.layouts.app.statuses') }}</a>
+                                <a class="nav-link @if(request()->routeIs('task_statuses.index')) active @endif" href="{{ route('task_statuses.index') }}">{{ __('views.layouts.app.statuses') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('labels.index') }}">{{ __('views.layouts.app.labels') }}</a>
+                                <a class="nav-link @if(request()->routeIs('labels.index')) active @endif" href="{{ route('labels.index') }}">{{ __('views.layouts.app.labels') }}</a>
                             </li>
                         </ul>
 
@@ -39,13 +39,13 @@
                             @guest
                                 @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('views.layouts.app.login') }}</a>
+                                        <a class="nav-link @if(request()->routeIs('login')) active @endif" href="{{ route('login') }}">{{ __('views.layouts.app.login') }}</a>
                                     </li>
                                 @endif
 
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('views.layouts.app.register') }}</a>
+                                        <a class="nav-link @if(request()->routeIs('register')) active @endif" href="{{ route('register') }}">{{ __('views.layouts.app.register') }}</a>
                                     </li>
                                 @endif
                             @else
