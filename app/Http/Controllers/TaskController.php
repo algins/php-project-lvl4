@@ -47,7 +47,9 @@ class TaskController extends Controller
 
     public function store(TaskRequest $request): RedirectResponse
     {
-        $task = $request->user()->createdTasks()->make($request->validated());
+        /** @var User $user */
+        $user = $request->user();
+        $task = $user->createdTasks()->make($request->validated());
         $task->save();
         $task->labels()->sync($request->input('labels'));
 

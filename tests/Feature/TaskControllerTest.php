@@ -88,6 +88,6 @@ class TaskControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDeleted($task);
+        $this->assertDatabaseMissing('tasks', $task->only('id'));
     }
 }

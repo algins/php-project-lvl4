@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /** @var array */
+    /** @var array<class-string, class-string> */
     protected $policies = [
         Task::class => TaskPolicy::class,
     ];

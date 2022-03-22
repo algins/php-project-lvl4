@@ -18,3 +18,4 @@ parameters:
         - app/Http/Controllers/Auth/*
 
     checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
