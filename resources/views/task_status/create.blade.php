@@ -3,9 +3,8 @@
 @section('content')
     <h1 class="mb-5">{{ __('views.task_status.create.create_status') }}</h1>
 
-    <form method="POST" action="{{ route('task_statuses.store') }}" accept-charset="UTF-8" class="w-50">
-        @csrf
+    {{ Form::model($taskStatus, ['url' => route('task_statuses.store'), 'class' => 'w-50']) }}
         @include('task_status.form')
-        <input class="btn btn-primary mt-3" type="submit" value="{{ __('views.task_status.create.store') }}">
-    </form>
+        {{ Form::submit(__('views.task_status.create.store'), ['class' => 'btn btn-primary mt-3']) }}
+    {{ Form::close() }}
 @endsection

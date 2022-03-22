@@ -1,6 +1,6 @@
 <div class="form-group mb-3">
-    <label for="name">{{ __('views.label.form.name') }}</label>
-    <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" id="name" maxlength="255" value="{{ old('name', $label->name ?? '') }}">
+    {{ Form::label('name', __('views.label.form.name')) }}
+    {{ Form::text('name', $label->name, ['class' => $errors->has('name') ? 'form-control is-invalid' : 'form-control', 'maxlength' => 255]) }}
 
     @error('name')
         <span class="invalid-feedback" role="alert">
@@ -10,8 +10,8 @@
 </div>
 
 <div class="form-group mb-3">
-    <label for="description">{{ __('views.label.form.description') }}</label>
-    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description">{{ old('description', $label->description ?? '') }}</textarea>
+    {{ Form::label('description', __('views.label.form.description')) }}
+    {{ Form::textarea('description', $label->description, ['class' => $errors->has('description') ? 'form-control is-invalid' : 'form-control']) }}
 
     @error('description')
         <span class="invalid-feedback" role="alert">

@@ -3,9 +3,8 @@
 @section('content')
     <h1 class="mb-5">{{ __('views.label.create.create_label') }}</h1>
 
-    <form method="POST" action="{{ route('labels.store') }}" accept-charset="UTF-8" class="w-50">
-        @csrf
+    {{ Form::model($label, ['url' => route('labels.store'), 'class' => 'w-50']) }}
         @include('label.form')
-        <input class="btn btn-primary mt-3" type="submit" value="{{ __('views.label.create.store') }}">
-    </form>
+        {{ Form::submit(__('views.label.create.store'), ['class' => 'btn btn-primary mt-3']) }}
+    {{ Form::close() }}
 @endsection
