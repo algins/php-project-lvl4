@@ -5,43 +5,25 @@
 
     <div class="d-flex mb-2">
         <div class="flex-grow-1">
-            <form method="GET" action="{{ route('tasks.index') }}" accept-charset="UTF-8">
+            {{ Form::open(['url' => route('tasks.index'), 'method' => 'GET']) }}
                 <div class="row no-gutters">
                     <div class="col mr-2">
-                        <select class="form-control" name="filter[status_id]">
-                            <option value="">{{ __('views.task.index.status') }}</option>
-
-                            @foreach ($taskStatuses as $taskStatus)
-                                <option value="{{ $taskStatus->id }}" @if($taskStatus->id == request('filter.status_id')) selected @endif>{{ $taskStatus->name }}</option>
-                            @endforeach
-                        </select>
+                        {{ Form::select('filter[status_id]', $taskStatuses->pluck('name', 'id'), request('filter.status_id'), ['placeholder' => __('views.task.index.status'), 'class' => 'form-control']) }}
                     </div>
 
                     <div class="col mr-2">
-                        <select class="form-control" name="filter[created_by_id]">
-                            <option value="">{{ __('views.task.index.creator') }}</option>
-
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}" @if($user->id == request('filter.created_by_id')) selected @endif>{{ $user->name }}</option>
-                            @endforeach
-                        </select>
+                        {{ Form::select('filter[created_by_id]', $users->pluck('name', 'id'), request('filter.created_by_id'), ['placeholder' => __('views.task.index.creator'), 'class' => 'form-control']) }}
                     </div>
 
                     <div class="col mr-2">
-                        <select class="form-control" name="filter[assigned_to_id]">
-                            <option value="">{{ __('views.task.index.assignee') }}</option>
-
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}" @if($user->id == request('filter.assigned_to_id')) selected @endif>{{ $user->name }}</option>
-                            @endforeach
-                        </select>
+                        {{ Form::select('filter[assigned_to_id]', $users->pluck('name', 'id'), request('filter.assigned_to_id'), ['placeholder' => __('views.task.index.assignee'), 'class' => 'form-control']) }}
                     </div>
 
                     <div class="col mr-2">
-                        <input class="btn btn-outline-primary" type="submit" value="{{ __('views.task.index.filter') }}">
+                        {{ Form::submit(__('views.task.index.filter'), ['class' => 'btn btn-outline-primary']) }}
                     </div>
                 </div>
-            </form>
+            {{ Form::close() }}
         </div>
 
         @auth
