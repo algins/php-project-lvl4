@@ -8,15 +8,15 @@
             {{ Form::open(['url' => route('tasks.index'), 'method' => 'GET']) }}
                 <div class="row no-gutters">
                     <div class="col mr-2">
-                        {{ Form::select('filter[status_id]', $taskStatuses->pluck('name', 'id'), request('filter.status_id'), ['placeholder' => __('views.task.index.status'), 'class' => 'form-control']) }}
+                        {{ Form::bsSelect('filter[status_id]', $taskStatuses->pluck('name', 'id'), request('filter.status_id'), __('views.task.index.status')) }}
                     </div>
 
                     <div class="col mr-2">
-                        {{ Form::select('filter[created_by_id]', $users->pluck('name', 'id'), request('filter.created_by_id'), ['placeholder' => __('views.task.index.creator'), 'class' => 'form-control']) }}
+                        {{ Form::bsSelect('filter[created_by_id]', $users->pluck('name', 'id'), request('filter.created_by_id'), __('views.task.index.creator')) }}
                     </div>
 
                     <div class="col mr-2">
-                        {{ Form::select('filter[assigned_to_id]', $users->pluck('name', 'id'), request('filter.assigned_to_id'), ['placeholder' => __('views.task.index.assignee'), 'class' => 'form-control']) }}
+                        {{ Form::bsSelect('filter[assigned_to_id]', $users->pluck('name', 'id'), request('filter.assigned_to_id'), __('views.task.index.assignee')) }}
                     </div>
 
                     <div class="col mr-2">
