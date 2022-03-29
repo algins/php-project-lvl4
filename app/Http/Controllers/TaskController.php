@@ -16,7 +16,7 @@ class TaskController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->authorizeResource(Task::class, 'task');
     }
 
     public function index(): View
@@ -90,7 +90,6 @@ class TaskController extends Controller
 
     public function destroy(Task $task): RedirectResponse
     {
-        $this->authorize('delete', $task);
         $task->labels()->detach();
         $task->delete();
 

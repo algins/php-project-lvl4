@@ -2,11 +2,9 @@
 
 namespace App\Policies;
 
-use App\Models\Task;
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TaskPolicy
+class TaskStatusPolicy
 {
     use HandlesAuthorization;
 
@@ -30,9 +28,9 @@ class TaskPolicy
         return auth()->check();
     }
 
-    public function delete(User $user, Task $task): bool
+    public function delete(): bool
     {
-        return $task->creator()->is($user);
+        return auth()->check();
     }
 
     public function restore(): bool

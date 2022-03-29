@@ -12,7 +12,7 @@ class LabelController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->authorizeResource(Label::class, 'label');
     }
 
     public function index(): View
