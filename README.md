@@ -29,4 +29,4 @@ $ make start # Open http://localhost:8000
 ```
 
 ### Demo:
-http://algins-task-manager.herokuapp.com
+https://algins-task-manager.herokuapp.com

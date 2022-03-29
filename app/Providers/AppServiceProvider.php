@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Form;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
+
         Form::component('bsSelect', 'components.form.select', ['name', 'options', 'value', 'placeholder', 'label']);
         Form::component('bsSelectMultiple', 'components.form.select-multiple', ['name', 'options', 'value', 'label']);
         Form::component('bsText', 'components.form.text', ['name', 'value', 'label']);
